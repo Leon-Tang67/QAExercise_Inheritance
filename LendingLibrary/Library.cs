@@ -19,8 +19,18 @@ namespace LendingLibrary
         
         public Member Add(string name, int age)
         {
-            Member member =
-            new Member(name, age, GetNextFreeMembershipNumber());
+            //Member member = new Member(name, age, GetNextFreeMembershipNumber());
+            //members.Add(member.MembershipNumber, member);
+            //return member;
+            Member member;
+            if (age < 16)
+            {
+                member = new JuniorMember(name, age, GetNextFreeMembershipNumber());
+            }
+            else
+            {
+                member = new AdultMember(name, age, GetNextFreeMembershipNumber());
+            }
             members.Add(member.MembershipNumber, member);
             return member;
         }
